@@ -1,0 +1,1637 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sarra ISMAIL - Full Stack Developer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#2563eb",
+              secondary: "#3b82f6",
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+      body {
+        font-family: "Poppins", sans-serif;
+      }
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideInFromLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-100px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes slideInFromRight {
+        from {
+          opacity: 0;
+          transform: translateX(100px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .animate-fadeInUp {
+        animation: fadeInUp 1s ease-out;
+      }
+
+      .animate-slideInLeft {
+        animation: slideInFromLeft 1s ease-out;
+      }
+
+      .animate-slideInRight {
+        animation: slideInFromRight 1s ease-out;
+      }
+
+      .animate-delay-1 {
+        animation-delay: 0.2s;
+      }
+
+      .animate-delay-2 {
+        animation-delay: 0.4s;
+      }
+
+      .animate-delay-3 {
+        animation-delay: 0.6s;
+      }
+
+      @keyframes typing {
+        from { width: 0 }
+        to { width: 100% }
+      }
+
+      @keyframes blink-caret {
+        from, to { border-color: transparent }
+        50% { border-color: #666 }
+      }
+
+      .typing-text {
+        border-right: 2px solid #666;
+        white-space: nowrap;
+        overflow: hidden;
+        animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+      }
+
+      .highlight-text {
+        position: relative;
+        display: inline-block;
+      }
+
+      .highlight-text::after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 30%;
+        bottom: 0;
+        left: 0;
+        background-color: rgba(99, 102, 241, 0.2);
+        transform: scaleX(0);
+        transform-origin: right;
+        transition: transform 0.6s ease;
+        z-index: -1;
+      }
+
+      .highlight-text.visible::after {
+        transform: scaleX(1);
+        transform-origin: left;
+      }
+
+      /* Common card animation styles */
+      .animate-card {
+        transition: all 0.3s ease;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .animate-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        transform: translateX(-100%);
+        transition: transform 0.6s ease;
+      }
+
+      .animate-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1) !important;
+      }
+
+      .animate-card:hover::before {
+        transform: translateX(100%);
+      }
+
+      /* Project card animations */
+      .project-card {
+        transition: all 0.3s ease;
+      }
+
+      .project-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .project-card:hover h3 {
+        color: #4299e1;
+      }
+
+      .project-card .tech-badge {
+        transition: all 0.3s ease;
+      }
+
+      .project-card:hover .tech-badge {
+        transform: scale(1.05);
+        background-color: #ebf8ff;
+      }
+
+      .github-link {
+        transition: all 0.3s ease;
+      }
+
+      .project-card:hover .github-link {
+        transform: translateX(5px);
+        color: #4299e1;
+      }
+
+      /* Experience block hover animation */
+      .experience-item {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      .experience-item:hover {
+        transform: scale(1.02);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Skills animations */
+      .skill-category {
+        transition: all 0.3s ease;
+      }
+
+      .skill-category:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .skill-category:hover h3 {
+        color: #4299e1;
+      }
+
+      .skill-item {
+        transition: all 0.3s ease;
+      }
+
+      .skill-category:hover .skill-item {
+        transform: scale(1.05);
+      }
+
+      /* Experience animations */
+      .experience-item {
+        transition: all 0.3s ease;
+      }
+
+      .experience-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .experience-item:hover h3 {
+        color: #4299e1;
+      }
+
+      .experience-item:hover .company-name {
+        transform: translateX(5px);
+      }
+
+      /* Contact form styles */
+      .contact-section {
+        background: linear-gradient(to right, #f7fafc, #edf2f7);
+        padding: 5rem 0;
+      }
+
+      .contact-form {
+        max-width: 600px;
+        margin: 0 auto;
+        background: white;
+        padding: 2.5rem;
+        border-radius: 1rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-label {
+        display: block;
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: #4a5568;
+        margin-bottom: 0.5rem;
+      }
+
+      .form-input {
+        width: 100%;
+        padding: 0.75rem;
+        border: 2px solid #e2e8f0;
+        border-radius: 0.5rem;
+        transition: all 0.3s ease;
+        font-size: 1rem;
+      }
+
+      .form-input:focus {
+        outline: none;
+        border-color: #4299e1;
+        box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.1);
+      }
+
+      .form-textarea {
+        min-height: 150px;
+        resize: vertical;
+      }
+
+      .submit-button {
+        background: #4299e1;
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+      }
+
+      .submit-button:hover {
+        background: #3182ce;
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(66, 153, 225, 0.2);
+      }
+
+      @media (max-width: 640px) {
+        .contact-form {
+          padding: 1.5rem;
+          margin: 0 1rem;
+        }
+      }
+
+      /* Popup styles */
+      .popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
+        text-align: center;
+      }
+
+      .popup.show {
+        display: block;
+      }
+
+      .popup i {
+        color: #4CAF50;
+        font-size: 48px;
+        margin-bottom: 10px;
+      }
+
+      .error-message {
+        color: red;
+        font-size: 0.8em;
+        margin-top: 5px;
+        display: none;
+      }
+
+      .error-message.show {
+        display: block;
+      }
+
+      .popup-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        visibility: hidden;
+        z-index: 999;
+        transition: all 0.3s ease;
+      }
+
+      .popup-overlay.show {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .popup-icon {
+        font-size: 3rem;
+        color: #48bb78;
+        margin-bottom: 1rem;
+      }
+
+      .popup-button {
+        background: #4299e1;
+        color: white;
+        padding: 0.5rem 1.5rem;
+        border-radius: 0.5rem;
+        margin-top: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .popup-button:hover {
+        background: #3182ce;
+      }
+
+      /* Form validation styles */
+      .form-input.error {
+        border-color: #f56565;
+      }
+
+      /* About Me Animations */
+      .fade-in-up {
+        opacity: 0;
+        transform: translateY(20px);
+        transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+      }
+
+      .fade-in-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Language Skills Styles */
+      .languages-container {
+        margin-top: 2rem;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.5rem;
+      }
+
+      .language-intro {
+        color: #6B7280;
+        margin-bottom: 2rem;
+        font-size: 1.1rem;
+        line-height: 1.6;
+      }
+
+      .language-card {
+        background: white;
+        padding: 0.8rem 1.5rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: default;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .language-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, #4F46E5, #818CF8);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+        z-index: 1;
+      }
+
+      .language-card:hover {
+        transform: translateY(-5px) scale(1.05);
+        box-shadow: 0 8px 20px rgba(79, 70, 229, 0.2);
+      }
+
+      .language-card:hover::before {
+        opacity: 0.1;
+      }
+
+      .language-name {
+        font-weight: 600;
+        color: #4F46E5;
+        text-align: center;
+        position: relative;
+        z-index: 2;
+      }
+
+      /* Staggered animation for language cards */
+      .language-card.fade-in-up {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      .language-card.fade-in-up.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .language-card:nth-child(1) { transition-delay: 0.1s; }
+      .language-card:nth-child(2) { transition-delay: 0.2s; }
+      .language-card:nth-child(3) { transition-delay: 0.3s; }
+      .language-card:nth-child(4) { transition-delay: 0.4s; }
+
+      /* Language Switcher Styles */
+      .language-switcher {
+        position: relative;
+        display: inline-block;
+      }
+
+      .language-button {
+        background: transparent;
+        border: none;
+        color: #4F46E5;
+        padding: 8px 16px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        font-size: 0.9rem;
+      }
+
+      .language-button:hover {
+        color: #4338CA;
+      }
+
+      .language-options {
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: white;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+        z-index: 50;
+        min-width: 120px;
+      }
+
+      .language-options.show {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      .language-option {
+        padding: 8px 16px;
+        cursor: pointer;
+        transition: background 0.2s ease;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+
+      .language-option:hover {
+        background: #F3F4F6;
+      }
+
+      .language-option img {
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+      }
+
+      .language-option.active {
+        background: #EEF2FF;
+        color: #4F46E5;
+      }
+
+      #projects {
+        padding: 3rem 0;
+        background-color: #f8fafc;
+      }
+
+      .projects-container {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        padding: 1rem 0;
+      }
+
+      .projects-wrapper {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.5rem;
+        padding: 0 1.5rem;
+      }
+
+      @media (max-width: 1200px) {
+        .projects-wrapper {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      @media (max-width: 640px) {
+        .projects-wrapper {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .project-card {
+        width: 100%;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        background: white;
+        border-radius: 1rem;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      }
+
+      .project-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      }
+
+      .project-card .p-6 {
+        padding: 1.5rem;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+
+      .project-card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 0.75rem;
+        color: #1a202c;
+      }
+
+      .project-card p {
+        font-size: 1rem;
+        line-height: 1.5;
+        margin-bottom: 1rem;
+        color: #4a5568;
+      }
+
+      .project-card .tech-stack {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: auto;
+      }
+
+      .project-card .tech-badge {
+        font-size: 0.875rem;
+        padding: 0.35rem 0.75rem;
+        border-radius: 0.375rem;
+        background-color: #ebf4ff;
+        color: #3182ce;
+        font-weight: 500;
+      }
+
+      .project-card .github-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 1rem;
+        padding: 0.5rem 1rem;
+        background-color: #2d3748;
+        color: white;
+        border-radius: 0.375rem;
+        transition: all 0.2s ease;
+      }
+
+      .project-card .github-link:hover {
+        background-color: #1a202c;
+      }
+
+      /* Education section styling */
+      .education-card {
+        background: white;
+        border-radius: 1rem;
+        padding: 2.5rem;
+        margin-bottom: 2rem;
+        display: flex;
+        align-items: center;
+        gap: 2.5rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .education-card::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+        transform: translateX(-100%);
+        transition: transform 0.6s ease;
+      }
+
+      .education-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .education-card:hover::before {
+        transform: translateX(100%);
+      }
+
+      .education-logo {
+        width: 100px;
+        height: auto;
+        object-fit: contain;
+        transition: transform 0.3s ease;
+      }
+
+      .education-card:hover .education-logo {
+        transform: scale(1.05);
+      }
+
+      .education-details {
+        flex-grow: 1;
+        transition: transform 0.3s ease;
+      }
+
+      .education-card:hover .education-details {
+        transform: translateX(5px);
+      }
+
+      .education-title {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #1a202c;
+        margin-bottom: 0.75rem;
+        transition: color 0.3s ease;
+      }
+
+      .education-card:hover .education-title {
+        color: #4299e1;
+      }
+
+      .education-school {
+        font-size: 1.1rem;
+        color: #6b7280;
+        margin-bottom: 0.5rem;
+      }
+
+      .education-period {
+        color: #718096;
+        position: absolute;
+        top: 2.5rem;
+        right: 2.5rem;
+        transition: transform 0.3s ease;
+      }
+
+      .education-card:hover .education-period {
+        transform: scale(1.05);
+      }
+
+      @media (max-width: 640px) {
+        .education-card {
+          padding: 1.5rem;
+          gap: 1.5rem;
+        }
+        
+        .education-logo {
+          width: 80px;
+        }
+
+        .education-period {
+          position: static;
+          margin-top: 0.5rem;
+        }
+      }
+
+      /* Responsive styles */
+      @media (max-width: 768px) {
+        .container {
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+
+        section {
+          padding-top: 3rem;
+          padding-bottom: 3rem;
+        }
+
+        h2 {
+          font-size: 2rem;
+          margin-bottom: 2rem;
+        }
+
+        .experience-item {
+          padding: 1.25rem;
+        }
+
+        .tech-stack {
+          flex-wrap: wrap;
+          gap: 0.5rem;
+        }
+
+        .education-card {
+          flex-direction: column;
+          text-align: center;
+          padding: 1.5rem;
+        }
+
+        .education-period {
+          position: static;
+          margin-top: 1rem;
+        }
+
+        .education-logo {
+          width: 80px;
+          margin: 0 auto;
+        }
+      }
+
+      @media (max-width: 640px) {
+        h1 {
+          font-size: 2.5rem;
+        }
+
+        .projects-wrapper {
+          grid-template-columns: 1fr;
+          gap: 1rem;
+          padding: 0 1rem;
+        }
+
+        .project-card {
+          margin-bottom: 1rem;
+        }
+
+        .tech-badge {
+          font-size: 0.75rem;
+          padding: 0.25rem 0.5rem;
+        }
+
+        .experience-item {
+          margin-bottom: 1rem;
+        }
+
+        .experience-item .flex {
+          flex-direction: column;
+        }
+
+        .experience-item .text-gray-500 {
+          margin-top: 0.5rem;
+        }
+      }
+
+      @media (min-width: 769px) and (max-width: 1024px) {
+        .projects-wrapper {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        .container {
+          max-width: 90%;
+        }
+      }
+
+      /* Ensure consistent spacing across all sections */
+      section {
+        overflow: hidden;
+        position: relative;
+      }
+
+      .container {
+        margin: 0 auto;
+        width: 100%;
+        max-width: 1200px;
+      }
+
+      /* Ensure cards don't overflow on small screens */
+      .project-card,
+      .education-card,
+      .experience-item {
+        max-width: 100%;
+        overflow: hidden;
+      }
+
+      /* Ensure text remains readable */
+      p, span, .tech-badge {
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+        hyphens: auto;
+      }
+    </style>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+            }
+          });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.animate-on-scroll').forEach((element) => {
+          observer.observe(element);
+        });
+      });
+    </script>
+  </head>
+  <body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-30 top-0 bg-white shadow-md">
+      <div class="container mx-auto px-6 py-4">
+        <div class="flex items-center justify-between">
+          <a class="text-2xl font-bold text-primary" href="#home">SI</a>
+          <div class="flex items-center space-x-8">
+            <div class="hidden md:flex space-x-8">
+              <a href="#about" class="hover:text-primary" data-translate="about">About</a>
+              <a href="#experience" class="hover:text-primary" data-translate="experience">Experience</a>
+              <a href="#skills" class="hover:text-primary" data-translate="skills">Skills</a>
+              <a href="#projects" class="hover:text-primary" data-translate="projects">Projects</a>
+              <a href="#education" class="hover:text-primary" data-translate="education">Education</a>
+              <a href="#languages" class="hover:text-primary" data-translate="languages">Languages</a>
+              <a href="#contact" class="hover:text-primary" data-translate="contact">Contact</a>
+            </div>
+            <div class="language-switcher">
+              <button class="language-button" onclick="toggleLanguageMenu()">
+                <span id="currentLang">EN</span>
+                <i class="fas fa-chevron-down"></i>
+              </button>
+              <div class="language-options" id="languageOptions">
+                <div class="language-option active" onclick="changeLanguage('en')">
+                  <img src="https://flagcdn.com/w40/gb.png" alt="English">
+                  English
+                </div>
+                <div class="language-option" onclick="changeLanguage('de')">
+                  <img src="https://flagcdn.com/w40/de.png" alt="German">
+                  Deutsch
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section
+      id="home"
+      class="h-[70vh] bg-cover bg-center relative"
+      style="background-image: url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');"
+    >
+      <!-- Dark overlay -->
+      <div class="absolute inset-0 bg-black bg-opacity-60"></div>
+      
+      <!-- Content -->
+      <div class="relative container mx-auto px-6 flex flex-col justify-center items-center h-full text-white">
+        <h1 class="text-5xl font-bold mb-4">Sarra ISMAIL</h1>
+        <p class="text-xl mb-8">Full Stack Web Developer</p>
+        <div class="flex justify-center space-x-4 mb-8">
+          <a
+            href="mailto:sarraismailabdallah@gmail.com"
+            class="bg-white text-primary px-6 py-2 rounded-full hover:bg-gray-100 transition-colors duration-300"
+          >
+            <i class="fas fa-envelope mr-2"></i>Contact Me
+          </a>
+          <a
+            href="https://linkedin.com/in/sarra-ismail1"
+            target="_blank"
+            class="border-2 border-white px-6 py-2 rounded-full hover:bg-white hover:text-primary transition-colors duration-300"
+          >
+            <i class="fab fa-linkedin mr-2"></i>LinkedIn
+          </a>
+        </div>
+        <div class="flex justify-center space-x-6 text-sm">
+          <span><i class="fas fa-map-marker-alt mr-2"></i>Passau, 94032 Germany</span>
+          <span><i class="fas fa-phone mr-2"></i>+4916090092121</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-gradient-to-r from-blue-50 to-indigo-50">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-6" data-translate="about">About Me</h2>
+        <div class="max-w-2xl mx-auto text-center">
+          <p class="text-gray-700 mb-6 fade-in-up">
+            <span class="highlight-text">Full Stack Web Developer</span> with expertise in creating 
+            responsive and user-friendly web applications.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-16 bg-white">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-12" data-translate="skills">Skills & Technologies</h2>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+          <!-- Languages -->
+          <div class="skill-category animate-card bg-white p-6 rounded-lg shadow-md h-full">
+            <h3 class="text-xl font-semibold mb-4 text-center">Languages</h3>
+            <ul class="space-y-3">
+              <li class="flex items-center">
+                <i class="fas fa-code text-primary mr-3 w-6"></i>
+                Python
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-code text-primary mr-3 w-6"></i>
+                C
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-code text-primary mr-3 w-6"></i>
+                JavaScript
+              </li>
+            </ul>
+          </div>
+
+          <!-- Technologies -->
+          <div class="skill-category animate-card bg-white p-6 rounded-lg shadow-md h-full">
+            <h3 class="text-xl font-semibold mb-4 text-center">Technologies</h3>
+            <ul class="space-y-3">
+              <li class="flex items-center">
+                <i class="fas fa-project-diagram text-primary mr-3 w-6"></i>
+                UML
+              </li>
+              <li class="flex items-center">
+                <i class="fab fa-node text-primary mr-3 w-6"></i>
+                NodeJS
+              </li>
+              <li class="flex items-center">
+                <i class="fab fa-python text-primary mr-3 w-6"></i>
+                Django
+              </li>
+              <li class="flex items-center">
+                <i class="fab fa-react text-primary mr-3 w-6"></i>
+                ReactJS
+              </li>
+              <li class="flex items-center">
+                <i class="fab fa-bootstrap text-primary mr-3 w-6"></i>
+                Bootstrap
+              </li>
+              <li class="flex items-center">
+                <i class="fab fa-html5 text-primary mr-3 w-6"></i>
+                HTML
+              </li>
+              <li class="flex items-center">
+                <i class="fab fa-css3-alt text-primary mr-3 w-6"></i>
+                CSS
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-server text-primary mr-3 w-6"></i>
+                REST API
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-paper-plane text-primary mr-3 w-6"></i>
+                Postman
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-check-circle text-primary mr-3 w-6"></i>
+                Selenium
+              </li>
+            </ul>
+          </div>
+
+          <!-- Combined Databases, OS & Methodology -->
+          <div class="skill-category animate-card bg-white p-6 rounded-lg shadow-md h-full">
+            <h3 class="text-xl font-semibold mb-4 text-center">Databases & Systems</h3>
+            <ul class="space-y-3">
+              <li class="flex items-center font-semibold mt-2">Databases:</li>
+              <li class="flex items-center">
+                <i class="fas fa-database text-primary mr-3 w-6"></i>
+                PostgreSQL
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-database text-primary mr-3 w-6"></i>
+                MongoDB
+              </li>
+              <li class="flex items-center">
+                <i class="fas fa-database text-primary mr-3 w-6"></i>
+                MySQL
+              </li>
+              
+              <li class="flex items-center font-semibold mt-4">Operating Systems:</li>
+              <li class="flex items-center">
+                <i class="fab fa-windows text-primary mr-3 w-6"></i>
+                Windows
+              </li>
+              <li class="flex items-center">
+                <i class="fab fa-linux text-primary mr-3 w-6"></i>
+                Linux (Ubuntu, openSUSE Tumbleweed)
+              </li>
+
+              <li class="flex items-center font-semibold mt-4">Methodology:</li>
+              <li class="flex items-center">
+                <i class="fas fa-tasks text-primary mr-3 w-6"></i>
+                Scrum (Agile)
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-16 bg-gray-50">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-12" data-translate="experience">Professional Experience</h2>
+        <div class="max-w-4xl mx-auto space-y-8">
+          <!-- Experience items with hover animation class -->
+          <div class="experience-item animate-card bg-white p-6 rounded-lg shadow-md cursor-pointer hover:shadow-lg transition-shadow duration-300 border-l-4 border-blue-500">
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <h3 class="text-xl font-semibold">Full Stack Web Developer</h3>
+              </div>
+              <span class="text-gray-500">Jan 2024 - Sept 2024</span>
+            </div>
+            <ul class="text-gray-600 list-disc ml-4 mb-4 space-y-2">
+              <li>Developed the responsive side of an existing Front-end online payment platform.</li>
+              <li>Designed and Developed a dashboard for monitoring online payment kiosks, enabling administrators to manage, enable, and disable payment systems.</li>
+            </ul>
+            <div class="mt-4">
+              <span
+                class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded mr-2"
+                >ReactJS</span
+              >
+
+              <span
+                class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded mr-2"
+                >ExpressJS</span
+              >
+              <span
+                class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded mr-2"
+                >NodeJS</span
+              >
+              <span class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded mr-2"
+                >MongoDB</span
+              >
+              <span class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded mr-2"
+                >HTML</span
+              >
+              <span class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded mr-2"
+                >CSS</span
+              >
+              <span class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded mr-2"
+                >Bootstrap</span
+              >
+              <span class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded mr-2"
+                >UML</span
+              >
+              <span class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded"
+                >Trello</span
+              >
+            </div>
+          </div>
+
+          <div class="experience-item animate-card bg-white p-6 rounded-lg shadow-md cursor-pointer hover:shadow-lg transition-shadow duration-300 border-l-4 border-blue-500">
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <h3 class="text-xl font-semibold">
+                  Software Engineer
+                </h3>
+              </div>
+              <span class="text-gray-500">Jan 2022 - Aug 2022</span>
+            </div>
+            <p class="text-gray-600">
+              Development of an HR management and recruitment platform
+            </p>
+            <div class="mt-4">
+              <span
+                class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded mr-2"
+                >ReactJS</span
+              >
+              <span
+                class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded mr-2"
+                >NodeJS</span
+              >
+              <span
+                class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded mr-2"
+                >MongoDB</span
+              >
+              <span
+                class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded mr-2"
+                >Docker</span
+              >
+              <span
+                class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded mr-2"
+                >CI/CD</span
+              >
+              <span
+                class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded mr-2"
+                >UML</span
+              >
+              <span
+                class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded mr-2"
+                >HTML</span
+              >
+              <span class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded mr-2"
+                >CSS</span
+              >
+              <span class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded"
+                >Bootstrap</span
+              >
+            </div>
+          </div>
+
+          <div class="experience-item animate-card bg-white p-6 rounded-lg shadow-md cursor-pointer hover:shadow-lg transition-shadow duration-300 border-l-4 border-blue-500">
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <h3 class="text-xl font-semibold">
+                  Backend Developer Internship
+                </h3>
+              </div>
+              <span class="text-gray-500">July 2021 - Sept 2021</span>
+            </div>
+            <p class="text-gray-600">
+              Development of scholarship web application
+            </p>
+            <div class="mt-4">
+              <span class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded mr-2">php</span>
+              <span class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded mr-2">Laravel</span>
+              <span class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded mr-2">MySQL</span>
+              <span class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded mr-2">Postman</span>
+              <span class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded mr-2">UML</span>
+              <span class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded mr-2">HTML</span>
+              <span class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded mr-2">CSS</span>
+              <span class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded mr-2">Bootstrap</span>
+              <span class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded">Trello</span>
+            </div>
+          </div>
+
+          <div class="experience-item animate-card bg-white p-6 rounded-lg shadow-md cursor-pointer hover:shadow-lg transition-shadow duration-300 border-l-4 border-blue-500">
+            <div class="flex justify-between items-start mb-4">
+              <div>
+                <h3 class="text-xl font-semibold">
+                  Data Analyst Intern
+                </h3>
+              </div>
+              <span class="text-gray-500">July 2020 - Sept 2020</span>
+            </div>
+            <p class="text-gray-600">
+              Analyzed data to assist real estate agencies in identifying suitable client offers.
+            </p>
+            <div class="mt-4">
+              <span class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded mr-2">Python3</span>
+              <span class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded mr-2">Selenium</span>
+              <span class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded mr-2">MySQL</span>
+              <span class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded mr-2">BeautifulSoup</span>
+              <span class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded mr-2">Anaconda</span>
+              <span class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded mr-2">Requests</span>
+              <span class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded mr-2">HTML</span>
+              <span class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded mr-2">CSS</span>
+              <span class="text-sm bg-blue-100 text-blue-800 px-2 py-1 rounded">Bootstrap</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-16 bg-white">
+      <div class="container mx-auto px-4">
+        <h2 class="text-4xl font-bold text-center mb-8" data-translate="projects">Projects</h2>
+        <div class="projects-container">
+          <div class="projects-wrapper">
+            <!-- Real Estate Website -->
+            <div class="project-card animate-card bg-white rounded-lg shadow-md overflow-hidden">
+              <div class="p-6">
+                <h3 class="font-bold">Real Estate Website</h3>
+                <p class="text-gray-600">Modern platform for property listings and user authentication.</p>
+                <div class="tech-stack">
+                  <span class="tech-badge">React</span>
+                  <span class="tech-badge">Node</span>
+                  <span class="tech-badge">MongoDB</span>
+                  <span class="tech-badge">HTML</span>
+                  <span class="tech-badge">CSS</span>
+                  <span class="tech-badge">Bootstrap</span>
+                  <span class="tech-badge">UML</span>
+                </div>
+                <a href="https://github.com/SarraISMAIL/estate" 
+                   target="_blank" 
+                   class="github-link">
+                  <i class="fab fa-github"></i>
+                  View Project
+                </a>
+              </div>
+            </div>
+
+            <!-- E-Gift Card -->
+            <div class="project-card animate-card bg-white rounded-lg shadow-md overflow-hidden">
+              <div class="p-6">
+                <h3 class="font-bold">E-Gift Card</h3>
+                <p class="text-gray-600">Digital gift card and e-wallet management system.</p>
+                <div class="tech-stack">
+                  <span class="tech-badge">React</span>
+                  <span class="tech-badge">Node</span>
+                  <span class="tech-badge">MongoDB</span>
+                  <span class="tech-badge">HTML</span>
+                  <span class="tech-badge">CSS</span>
+                  <span class="tech-badge">Bootstrap</span>
+                  <span class="tech-badge">UML</span>
+                </div>
+                <a href="https://github.com/SarraISMAIL/ewallet" 
+                   target="_blank" 
+                   class="github-link">
+                  <i class="fab fa-github"></i>
+                  View Project
+                </a>
+              </div>
+            </div>
+
+            <!-- Medica-Share -->
+            <div class="project-card animate-card bg-white rounded-lg shadow-md overflow-hidden">
+              <div class="p-6">
+                <h3 class="font-bold">Medica-Share</h3>
+                <p class="text-gray-600">Platform connecting medicine donors with recipients.</p>
+                <div class="tech-stack">
+                  <span class="tech-badge">Angular</span>
+                  <span class="tech-badge">Django</span>
+                  <span class="tech-badge">PostgreSQL</span>
+                  <span class="tech-badge">HTML</span>
+                  <span class="tech-badge">CSS</span>
+                  <span class="tech-badge">Bootstrap</span>
+                  <span class="tech-badge">UML</span>
+                </div>
+                <a href="https://github.com/SarraISMAIL/Innovation_project"
+                   target="_blank"
+                   class="github-link">
+                  <i class="fab fa-github"></i>
+                  View Project
+                </a>
+              </div>
+            </div>
+
+            <!-- Process Management -->
+            <div class="project-card animate-card bg-white rounded-lg shadow-md overflow-hidden">
+              <div class="p-6">
+                <h3 class="font-bold">Process Management</h3>
+                <p class="text-gray-600">Real-time system process monitoring and control.</p>
+                <div class="tech-stack">
+                  <span class="tech-badge">Java</span>
+                  <span class="tech-badge">Threading</span>
+                  <span class="tech-badge">Systems</span>
+                </div>
+                <a href="https://github.com/SarraISMAIL/Management-System-Multitasking"
+                   target="_blank"
+                   class="github-link">
+                  <i class="fab fa-github"></i>
+                  View Project
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="py-16 bg-gray-50">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-16" data-translate="education">Education</h2>
+        <div class="max-w-4xl mx-auto">
+          <!-- Education cards -->
+          <div class="education-card">
+            <img src="./assets/images/images/passau-logo.png" alt="University of Passau Logo" class="education-logo">
+            <div class="education-details">
+              <h3 class="education-title">Master's in Computer Science</h3>
+              <p class="education-school">University of Passau - Germany</p>
+            </div>
+            <span class="education-period">2024 - Present</span>
+          </div>
+
+          <div class="education-card">
+            <img src="./assets/images/images/Logo-ENISO.svg" alt="ENISO Logo" class="education-logo">
+            <div class="education-details">
+              <h3 class="education-title">Engineering Degree in Computer Science</h3>
+              <p class="education-school">National Engineering School of Sousse - Tunisia</p>
+            </div>
+            <span class="education-period">2019 - 2022</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Languages Section -->
+    <section id="languages" class="py-16 bg-white">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-8" data-translate="languages">Languages</h2>
+        <div class="max-w-2xl mx-auto text-center">
+          <p class="language-intro fade-in-up">
+            As a multilingual developer, I bring a global perspective to my work. 
+            My language skills enable me to collaborate effectively with international teams 
+            and create solutions that resonate across cultural boundaries.
+          </p>
+          <div class="languages-container">
+            <div class="language-card fade-in-up">
+              <div class="language-name">Arabic</div>
+            </div>
+            <div class="language-card fade-in-up">
+              <div class="language-name">English</div>
+            </div>
+            <div class="language-card fade-in-up">
+              <div class="language-name">French</div>
+            </div>
+            <div class="language-card fade-in-up">
+              <div class="language-name">German</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gray-50">
+      <div class="container mx-auto px-6">
+        <h2 class="text-3xl font-bold text-center mb-12" data-translate="contact">Get in Touch</h2>
+        <form id="contactForm" class="contact-form animate-card" onsubmit="return false;">
+          <div class="form-group">
+            <label class="form-label" for="name">Name</label>
+            <input type="text" id="name" name="name" class="form-input" placeholder="Your name" required>
+            <div id="nameError" class="error-message"></div>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="email">Email</label>
+            <input type="email" id="email" name="email" class="form-input" placeholder="your.email@example.com" required>
+            <div id="emailError" class="error-message"></div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label" for="subject">Subject</label>
+            <select id="subject" name="subject" class="form-input" required>
+              <option value="">Select a subject</option>
+              <option value="job">Job Opportunity</option>
+              <option value="project">Project Proposal</option>
+              <option value="collaboration">Collaboration</option>
+              <option value="other">Other</option>
+            </select>
+            <div id="subjectError" class="error-message"></div>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="message">Message</label>
+            <textarea id="message" name="message" class="form-input form-textarea" placeholder="Your message here..." required></textarea>
+            <div id="messageError" class="error-message"></div>
+          </div>
+          
+          <button type="submit" class="submit-button">
+            Send Message
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Add this before closing body tag -->
+    <div class="popup-overlay" id="popupOverlay"></div>
+    <div class="popup" id="successPopup">
+      <i class="fas fa-check-circle popup-icon"></i>
+      <h3 class="text-xl font-bold mb-2">Message Sent!</h3>
+      <p class="text-gray-600 mb-4">Your message has been sent to Engineer Sarra. Thank you for reaching out!</p>
+      <button class="popup-button" onclick="closePopup()">Close</button>
+    </div>
+
+    <!-- Add EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+
+    <script>
+      // Initialize EmailJS with your public key
+      (function() {
+        emailjs.init("y7i4KsRRp3GnuapVQ");
+        console.log('EmailJS initialized');
+      })();
+
+      // Form validation and submission
+      document.getElementById('contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        if (validateForm()) {
+          // Show loading state
+          const submitButton = this.querySelector('button[type="submit"]');
+          const originalText = submitButton.innerHTML;
+          submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+          submitButton.disabled = true;
+
+          // Prepare template parameters
+          const templateParams = {
+            from_name: document.getElementById('name').value,
+            from_email: document.getElementById('email').value,
+            subject: document.getElementById('subject').value,
+            message: document.getElementById('message').value,
+            to_name: 'Engineer Sarra',
+            to_email: 'sarraismailabdallah@gmail.com' // Add your email explicitly
+          };
+
+          console.log('Sending email with params:', templateParams);
+
+          // Send email using EmailJS
+          emailjs.send(
+            'service_om1tk6c',
+            'template_zmor777',
+            templateParams
+          )
+          .then(function(response) {
+            console.log('Email sent successfully:', response);
+            showPopup();
+            clearForm();
+            submitButton.innerHTML = originalText;
+            submitButton.disabled = false;
+          }, function(error) {
+            console.error('EmailJS Error:', error);
+            // More detailed error message
+            let errorMessage = 'Failed to send message. ';
+            if (error.text) {
+              errorMessage += error.text;
+            } else {
+              errorMessage += 'Please check your connection and try again.';
+            }
+            alert(errorMessage);
+            submitButton.innerHTML = originalText;
+            submitButton.disabled = false;
+          });
+        }
+      });
+
+      function validateForm() {
+        let isValid = true;
+        const inputs = ['name', 'email', 'subject', 'message'];
+        
+        inputs.forEach(id => {
+          const input = document.getElementById(id);
+          const error = document.getElementById(`${id}Error`);
+          
+          if (!input.value.trim()) {
+            markError(input, error, 'This field is required');
+            isValid = false;
+          } else if (id === 'email' && !isValidEmail(input.value)) {
+            markError(input, error, 'Please enter a valid email address');
+            isValid = false;
+          } else {
+            clearError(input, error);
+          }
+        });
+
+        if (!isValid) {
+          console.log('Form validation failed');
+        }
+        return isValid;
+      }
+
+      function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+      }
+
+      function markError(input, errorElement, message) {
+        input.classList.add('error');
+        errorElement.textContent = message;
+        errorElement.classList.add('show');
+        input.focus();
+      }
+
+      function clearError(input, errorElement) {
+        input.classList.remove('error');
+        errorElement.classList.remove('show');
+      }
+
+      function showPopup() {
+        document.getElementById('popupOverlay').classList.add('show');
+        document.getElementById('successPopup').classList.add('show');
+      }
+
+      function closePopup() {
+        document.getElementById('popupOverlay').classList.remove('show');
+        document.getElementById('successPopup').classList.remove('show');
+        document.getElementById('home').scrollIntoView({ behavior: 'smooth' });
+      }
+
+      function clearForm() {
+        document.getElementById('contactForm').reset();
+      }
+    </script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const observerOptions = {
+          root: null,
+          rootMargin: '0px',
+          threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              if (entry.target.classList.contains('fade-in-up')) {
+                // Add a slight delay for each subsequent element
+                const delay = Array.from(entry.target.parentElement.children)
+                                  .indexOf(entry.target) * 200;
+                entry.target.style.transitionDelay = delay + 'ms';
+              }
+            }
+          });
+        }, observerOptions);
+
+        // Observe all fade-in-up elements
+        document.querySelectorAll('.fade-in-up, .highlight-text').forEach(el => {
+          observer.observe(el);
+        });
+      });
+    </script>
+    <script>
+      // Language switcher functionality
+      function toggleLanguageMenu() {
+        const options = document.getElementById('languageOptions');
+        options.classList.toggle('show');
+      }
+
+      // Close language menu when clicking outside
+      document.addEventListener('click', function(event) {
+        const switcher = document.querySelector('.language-switcher');
+        const options = document.getElementById('languageOptions');
+        if (!switcher.contains(event.target)) {
+          options.classList.remove('show');
+        }
+      });
+
+      // Translations object
+      const translations = {
+        en: {
+          about: "About Me",
+          experience: "Experience",
+          skills: "Skills & Technologies",
+          projects: "Projects",
+          education: "Education",
+          languages: "Languages",
+          contact: "Contact",
+          // Add more translations as needed
+        },
+        de: {
+          about: "Über mich",
+          experience: "Erfahrung",
+          skills: "Fähigkeiten & Technologien",
+          projects: "Projekte",
+          education: "Ausbildung",
+          languages: "Sprachen",
+          contact: "Kontakt",
+          // Add more translations as needed
+        }
+      };
+
+      function changeLanguage(lang) {
+        // Update active state in menu
+        document.querySelectorAll('.language-option').forEach(option => {
+          option.classList.remove('active');
+        });
+        document.querySelector(`.language-option[onclick*="${lang}"]`).classList.add('active');
+        
+        // Update current language display
+        document.getElementById('currentLang').textContent = lang.toUpperCase();
+        
+        // Update all translatable elements
+        document.querySelectorAll('[data-translate]').forEach(element => {
+          const key = element.getAttribute('data-translate');
+          if (translations[lang][key]) {
+            element.textContent = translations[lang][key];
+          }
+        });
+
+        // Close the menu
+        document.getElementById('languageOptions').classList.remove('show');
+
+        // Set language direction for Arabic
+        document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+      }
+    </script>
+    <script src="script_new.js"></script>
+  </body>
+</html>
