@@ -3,7 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sarra ISMAIL - Full Stack Developer</title>
+    <title>Sarra ISMAIL</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='50' fill='url(%23gradient)'/><defs><linearGradient id='gradient' x1='0%' y1='0%' x2='100%' y2='100%'><stop offset='0%' style='stop-color:%232563eb'/><stop offset='100%' style='stop-color:%233b82f6'/></linearGradient></defs><text x='50' y='65' font-family='Arial' font-size='45' font-weight='bold' text-anchor='middle' fill='white'>SI</text></svg>" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link
       rel="stylesheet"
@@ -850,6 +851,63 @@
         word-wrap: break-word;
         hyphens: auto;
       }
+
+      /* Logo styles */
+      .logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background: linear-gradient(135deg, #2563eb, #3b82f6);
+        border-radius: 50%;
+        color: white;
+        font-weight: bold;
+        font-size: 1.2rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        box-shadow: 0 2px 4px rgba(37, 99, 235, 0.1);
+      }
+
+      .logo:hover {
+        transform: scale(1.05);
+        box-shadow: 0 4px 6px rgba(37, 99, 235, 0.2);
+      }
+
+      /* Navbar animations */
+      .nav-link {
+        position: relative;
+        padding: 0.5rem 0;
+        transition: all 0.3s ease;
+      }
+
+      .nav-link::after {
+        content: '';
+        position: absolute;
+        width: 0;
+        height: 2px;
+        bottom: 0;
+        left: 0;
+        background-color: #2563eb;
+        transition: width 0.3s ease;
+      }
+
+      .nav-link:hover::after {
+        width: 100%;
+      }
+
+      .nav-link:hover {
+        transform: translateY(-2px);
+      }
+
+      /* Add staggered animation delay for menu items */
+      .nav-link:nth-child(1) { transition-delay: 0.1s; }
+      .nav-link:nth-child(2) { transition-delay: 0.15s; }
+      .nav-link:nth-child(3) { transition-delay: 0.2s; }
+      .nav-link:nth-child(4) { transition-delay: 0.25s; }
+      .nav-link:nth-child(5) { transition-delay: 0.3s; }
+      .nav-link:nth-child(6) { transition-delay: 0.35s; }
+      .nav-link:nth-child(7) { transition-delay: 0.4s; }
     </style>
     <script>
       document.addEventListener('DOMContentLoaded', function() {
@@ -872,16 +930,20 @@
     <nav class="fixed w-full z-30 top-0 bg-white shadow-md">
       <div class="container mx-auto px-6 py-4">
         <div class="flex items-center justify-between">
-          <a class="text-2xl font-bold text-primary" href="#home">SI</a>
+          <a href="#home" class="flex items-center">
+            <div class="w-10 h-10 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center text-white font-bold text-lg hover:scale-110 transition-transform duration-300 shadow-md hover:shadow-lg">
+              SI
+            </div>
+          </a>
           <div class="flex items-center space-x-8">
             <div class="hidden md:flex space-x-8">
-              <a href="#about" class="hover:text-primary" data-translate="about">About</a>
-              <a href="#experience" class="hover:text-primary" data-translate="experience">Experience</a>
-              <a href="#skills" class="hover:text-primary" data-translate="skills">Skills</a>
-              <a href="#projects" class="hover:text-primary" data-translate="projects">Projects</a>
-              <a href="#education" class="hover:text-primary" data-translate="education">Education</a>
-              <a href="#languages" class="hover:text-primary" data-translate="languages">Languages</a>
-              <a href="#contact" class="hover:text-primary" data-translate="contact">Contact</a>
+              <a href="#about" class="nav-link hover:text-primary" data-translate="about">About</a>
+              <a href="#experience" class="nav-link hover:text-primary" data-translate="experience">Experience</a>
+              <a href="#skills" class="nav-link hover:text-primary" data-translate="skills">Skills</a>
+              <a href="#projects" class="nav-link hover:text-primary" data-translate="projects">Projects</a>
+              <a href="#education" class="nav-link hover:text-primary" data-translate="education">Education</a>
+              <a href="#languages" class="nav-link hover:text-primary" data-translate="languages">Languages</a>
+              <a href="#contact" class="nav-link hover:text-primary" data-translate="contact">Contact</a>
             </div>
             <div class="language-switcher">
               <button class="language-button" onclick="toggleLanguageMenu()">
